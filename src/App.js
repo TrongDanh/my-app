@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import {Routes, Route} from 'react-router-dom'
+import UserTemPlate from './templates/UserTemPlate/UserTemPlate';
+import Home from './pages/Home/Home';
+import SignIn from './pages/SignIn/SignIn';
+import AdminTemplate from './templates/AdminTemplate/AdminTemplate';
+import ManagerMovie from './pages/ManagerMovie/ManagerMovie';
+import ManagerAddMovie from './pages/ManagerAddMovie/ManagerAddMovie';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        {/* userTemplate */}
+        <Route path='/' element={<UserTemPlate/>}>
+          <Route index element={<Home/>}/>
+        </Route>
+
+        {/* AdminTemplate */}
+        <Route path='/admin' element={<AdminTemplate/>}>
+          <Route path='manager-movie' element={<ManagerMovie/>} />
+          <Route path='manager-add-movie' element={<ManagerAddMovie/>} />
+        </Route>
+        <Route path='/sign-in' element={<SignIn/>}/>
+      </Routes>
+    </>
   );
 }
 
